@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     if (data != null) {
                         Uri uri = data.getData();
                         compressImage(uri);
+
                     } else {
                         Log.e("======", "========图片为空======");
                     }
