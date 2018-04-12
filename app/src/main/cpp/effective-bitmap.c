@@ -66,11 +66,11 @@ int generateJPEG(BYTE* data, int w, int h, int quality,
     jpeg_stdio_dest(&jcs, f);
     jcs.image_width = w;
     jcs.image_height = h;
-    if (optimize) {
-        LOGI("optimize==ture");
-    } else {
-        LOGI("optimize==false");
-    }
+    //if (optimize) {
+    //    LOGI("optimize==ture");
+    //} else {
+    //    LOGI("optimize==false");
+    //}
 
     jcs.arith_code = false;
     jcs.input_components = nComponent;
