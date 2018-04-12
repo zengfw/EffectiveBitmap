@@ -15,8 +15,8 @@
 
 
 #define LOG_TAG "jni"
-#define LOGW(...)  __android_log_write(ANDROID_LOG_WARN,LOG_TAG,__VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
+//#define LOGW(...)  __android_log_write(ANDROID_LOG_WARN,LOG_TAG,__VA_ARGS__)
+//#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 #define true 1
@@ -93,11 +93,11 @@ int generateJPEG(BYTE* data, int w, int h, int quality,
         jpeg_write_scanlines(&jcs, row_pointer, 1);
     }
 
-    if (jcs.optimize_coding) {
-        LOGI("optimize==ture");
-    } else {
-        LOGI("optimize==false");
-    }
+//    if (jcs.optimize_coding) {
+//        LOGI("optimize==ture");
+//    } else {
+//        LOGI("optimize==false");
+//    }
     jpeg_finish_compress(&jcs);
     jpeg_destroy_compress(&jcs);
     fclose(f);
