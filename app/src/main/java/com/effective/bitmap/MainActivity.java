@@ -28,14 +28,6 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
-    // https://github.com/bither/bither-android-lib/blob/master/REASON.md
-    // 参考资料：https://blog.csdn.net/talkxin/article/details/50696511
-    // http://www.cnblogs.com/MaxIE/p/3951294.html
-    // https://github.com/bither/bither-android-lib
-    // https://blog.csdn.net/carryWorld/article/details/75026171
-    // https://www.jianshu.com/p/5f29fd671750
-    // https://blog.csdn.net/fpcc/article/details/69942540
-
     public static final int REQUEST_CODE_IMAGE = 0;
     public static final int REQUEST_CODE_KITKAT_IMAGE = 1;
     public static final int REQUEST_CODE_PERMISSION = 2;
