@@ -7,4 +7,8 @@
 <img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/img2.jpg" width = "300" height = "308" align=center />
 
 ## 使用方法
-添加libs包中的.so文件到项目中即可。
+将libs包中libeffective-bitmap.so、libjpegbither.so到项目中并加载即可。但是你必须使用类的限定名为“com.effective.bitmap.utils.EffectiveBitmapUtils”并添加：
+```
+public static native String compressBitmap(Bitmap bit, int w, int h, int quality, byte[] fileNameBytes,
+                                               boolean optimize);
+```
