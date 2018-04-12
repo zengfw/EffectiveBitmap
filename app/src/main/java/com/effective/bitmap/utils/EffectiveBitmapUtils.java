@@ -25,7 +25,7 @@ public class EffectiveBitmapUtils {
     public static native String compressBitmap(Bitmap bit, int w, int h, int quality, byte[] fileNameBytes,
                                                boolean optimize);
 
-    private static int DEFAULT_QUALITY = 95;
+    private static int DEFAULT_QUALITY = 30;
 
     /**
      * @param bit      bitmap对象
