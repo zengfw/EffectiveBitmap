@@ -173,10 +173,3 @@ jstring Java_com_effective_bitmap_utils_EffectiveBitmapUtils_compressBitmap(JNIE
     }
     return (*env)->NewStringUTF(env, "1"); //success
 }
-
-JNIEXPORT jstring JNICALL Java_com_effective_bitmap_utils_EffectiveBitmapUtils_stringFromJNI(
-        JNIEnv *env,
-        jclass jcls) {
-    jstring result = (*env)->NewStringUTF(env, "I am String type.");
-    return result;
-}

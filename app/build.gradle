@@ -9,15 +9,15 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        externalNativeBuild {
-            cmake {
-                cppFlags ""
-            }
-        }
-
-        ndk {
-            abiFilters 'armeabi'
-        }
+//        externalNativeBuild {
+//            cmake {
+//                cppFlags ""
+//            }
+//        }
+//
+//        ndk {
+//            abiFilters 'armeabi'
+//        }
     }
     buildTypes {
         release {
@@ -28,16 +28,16 @@ android {
 
     sourceSets {
         main {
-            jni.srcDirs = []	// 不添加这行配置总会报很多其他异常，不知道为什么
+            jni.srcDirs = []
             jniLibs.srcDirs = ['libs']
         }
     }
 
-    externalNativeBuild {
-        cmake {
-            path "CMakeLists.txt"
-        }
-    }
+//    externalNativeBuild {
+//        cmake {
+//            path "CMakeLists.txt"
+//        }
+//    }
 }
 
 dependencies {

@@ -1,61 +1,93 @@
 package com.effective.bitmap.utils;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 /**
- * Created by zfw on 2018/4/12.
+ * Created by Ricky on 2018/4/12.
  */
 
 public class EffectiveBitmapUtils {
 
-    public static native String stringFromJNI();
+    static {
+        System.loadLibrary("jpegbither");
+        System.loadLibrary("effective-bitmap");
+    }
 
-    /**
-     * 调用底层 bitherlibjni.c中的方法
-     *
-     * @param bit
-     * @param w
-     * @param h
-     * @param quality
-     * @param fileNameBytes
-     * @param optimize
-     * @return
-     * @Description:函数描述
-     */
     public static native String compressBitmap(Bitmap bit, int w, int h, int quality, byte[] fileNameBytes,
                                                boolean optimize);
 
     private static int DEFAULT_QUALITY = 30;
 
-    /**
-     * @param bit      bitmap对象
-     * @param fileName 指定保存目录名
-     * @param optimize 是否采用哈弗曼表数据计算 品质相差5-10倍
-     * @Description: JNI基本压缩
-     */
-    public static void compressBitmap(Bitmap bit, String fileName, boolean optimize) {
+    public static void compressByJNI(Bitmap bit, String fileName, boolean optimize) {
         saveBitmap(bit, DEFAULT_QUALITY, fileName, optimize);
     }
 
-    /**
-     * 调用native方法
-     *
-     * @param bit
-     * @param quality
-     * @param fileName
-     * @param optimize
-     * @Description:函数描述
-     */
-    public static void saveBitmap(Bitmap bit, int quality, String fileName, boolean optimize) {
+    private static void saveBitmap(Bitmap bit, int quality, String fileName, boolean optimize) {
         compressBitmap(bit, bit.getWidth(), bit.getHeight(), quality, fileName.getBytes(), optimize);
     }
 
-    /**
-     * 加载lib下两个so文件
-     */
-    static {
-        System.loadLibrary("jpegbither");
-        System.loadLibrary("effective-bitmap");
+    public static void compressByQuality(Bitmap bmp, File file) {
+        int options = DEFAULT_QUALITY;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, options, baos);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(baos.toByteArray());
+            fos.flush();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void compressBySize(Bitmap bmp, File file) {
+        int ratio = 8;
+        Bitmap result = Bitmap.createBitmap(bmp.getWidth() / ratio, bmp.getHeight() / ratio, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(result);
+        Rect rect = new Rect(0, 0, bmp.getWidth() / ratio, bmp.getHeight() / ratio);
+        canvas.drawBitmap(bmp, null, rect, null);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        result.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(baos.toByteArray());
+            fos.flush();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void compressBySample(String filePath, File file) {
+        int inSampleSize = 8;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = false;
+        options.inSampleSize = inSampleSize;
+        Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        try {
+            if (file.exists()) {
+                file.delete();
+            } else {
+                file.createNewFile();
+            }
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(baos.toByteArray());
+            fos.flush();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

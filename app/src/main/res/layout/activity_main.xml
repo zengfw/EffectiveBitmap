@@ -6,16 +6,17 @@
     android:orientation="vertical"
     tools:context="com.effective.bitmap.MainActivity">
 
-    <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="pickFromGallery"
-        android:text="图片"/>
+        android:onClick="selectPhoto"
+        android:text="选择图片压缩"/>
+
+    <TextView
+        android:id="@+id/tv_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="2dp"
+        android:padding="10dp"/>
 
 </LinearLayout>
