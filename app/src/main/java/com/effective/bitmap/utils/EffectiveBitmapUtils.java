@@ -54,6 +54,7 @@ public class EffectiveBitmapUtils {
      * 加载lib下两个so文件
      */
     static {
+        System.loadLibrary("jpegbither");
         System.loadLibrary("effective-bitmap");
     }
 

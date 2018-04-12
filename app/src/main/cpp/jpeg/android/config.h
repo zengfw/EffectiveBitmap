@@ -76,6 +76,7 @@
 
 /* Define if you need short function names */
 /* #undef NEED_SHORT_EXTERNAL_NAMES */
+//#define NEED_SHORT_EXTERNAL_NAMES
 
 /* Define if you have sys/types.h */
 #define NEED_SYS_TYPES_H 1

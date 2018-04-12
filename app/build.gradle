@@ -14,6 +14,10 @@ android {
                 cppFlags ""
             }
         }
+
+        ndk {
+            abiFilters 'armeabi'
+        }
     }
     buildTypes {
         release {
@@ -21,6 +25,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            jni.srcDirs = []	// 不添加这行配置总会报很多其他异常，不知道为什么
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"

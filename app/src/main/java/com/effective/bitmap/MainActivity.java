@@ -21,6 +21,14 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    // https://github.com/bither/bither-android-lib/blob/master/REASON.md
+    // 参考资料：https://blog.csdn.net/talkxin/article/details/50696511
+    // http://www.cnblogs.com/MaxIE/p/3951294.html
+    // https://github.com/bither/bither-android-lib
+    // https://blog.csdn.net/carryWorld/article/details/75026171
+    // https://www.jianshu.com/p/5f29fd671750
+    // https://blog.csdn.net/fpcc/article/details/69942540
+
     public static final int REQUEST_PICK_IMAGE = 10011;
     public static final int REQUEST_KITKAT_PICK_IMAGE = 10012;
 
@@ -85,20 +93,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void compressImage(Uri uri) {
-//        Log.e("===compressImage===", "====开始====uri==" + uri.getPath());
-//        try {
-//            File saveFile = new File(getExternalCacheDir(), "终极压缩.jpg");
-//            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-//
-//            Log.e("===compressImage===", "====开始==压缩==saveFile==" + saveFile.getAbsolutePath());
-//            EffectiveBitmapUtils.compressBitmap(bitmap, saveFile.getAbsolutePath(), true);
-//            Log.e("===compressImage===", "====完成==压缩==saveFile==" + saveFile.getAbsolutePath());
-//
-//
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        Log.e("===compressImage===", "====开始====uri==" + uri.getPath());
+        try {
+            File saveFile = new File(getExternalCacheDir(), "终极压缩.jpg");
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+
+            Log.e("===compressImage===", "====开始==压缩==saveFile==" + saveFile.getAbsolutePath());
+            EffectiveBitmapUtils.compressBitmap(bitmap, saveFile.getAbsolutePath(), true);
+            Log.e("===compressImage===", "====完成==压缩==saveFile==" + saveFile.getAbsolutePath());
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
