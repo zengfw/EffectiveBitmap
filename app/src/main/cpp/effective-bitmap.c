@@ -48,7 +48,7 @@ longjmp(myerr->setjmp_buffer, 1);
 int generateJPEG(BYTE* data, int w, int h, int quality,
                  const char* outfilename, jboolean optimize) {
     int nComponent = 3;
-
+    // jpeg的结构体，保存的比如宽、高、位深、图片格式等信息
     struct jpeg_compress_struct jcs;
 
     struct my_error_mgr jem;
@@ -59,19 +59,17 @@ int generateJPEG(BYTE* data, int w, int h, int quality,
         return 0;
     }
     jpeg_create_compress(&jcs);
+    // 打开输出文件 wb:可写byte
     FILE* f = fopen(outfilename, "wb");
     if (f == NULL) {
         return 0;
     }
+    // 设置结构体的文件路径
     jpeg_stdio_dest(&jcs, f);
     jcs.image_width = w;
     jcs.image_height = h;
-    //if (optimize) {
-    //    LOGI("optimize==ture");
-    //} else {
-    //    LOGI("optimize==false");
-    //}
 
+    // 设置哈夫曼编码
     jcs.arith_code = false;
     jcs.input_components = nComponent;
     if (nComponent == 1)
@@ -82,7 +80,7 @@ int generateJPEG(BYTE* data, int w, int h, int quality,
     jpeg_set_defaults(&jcs);
     jcs.optimize_coding = optimize;
     jpeg_set_quality(&jcs, quality, true);
-
+    // 开始压缩，写入全部像素
     jpeg_start_compress(&jcs, TRUE);
 
     JSAMPROW row_pointer[1];
@@ -93,11 +91,6 @@ int generateJPEG(BYTE* data, int w, int h, int quality,
         jpeg_write_scanlines(&jcs, row_pointer, 1);
     }
 
-//    if (jcs.optimize_coding) {
-//        LOGI("optimize==ture");
-//    } else {
-//        LOGI("optimize==false");
-//    }
     jpeg_finish_compress(&jcs);
     jpeg_destroy_compress(&jcs);
     fclose(f);
