@@ -18,6 +18,9 @@
 #### size_238KB
 <img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/size_238KB.png" width = "270" height = "270" align=center />
 
+ - 采样率、尺寸压缩不是我们要的结果
+ - JNI、质量压缩设置的压缩质量值均为30，JNI是278KB,直接质量压缩是484KB，综合起来，JNI最优
+
 ## 使用方法
 1.将libs包中libeffective-bitmap.so、libjpegbither.so到项目中并加载即可。但是你必须使用类的限定名为“com.effective.bitmap.utils.EffectiveBitmapUtils”并添加：
 ```
