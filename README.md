@@ -8,10 +8,13 @@
 
 #### jni_278KB
 <img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/jni_278KB.png" width = "270" height = "270" align=center />
+
 #### quality_484KB
 <img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/quality_484KB.png" width = "270" height = "270" align=center />
+
 #### sample_199KB
 <img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/sample_199KB.png" width = "270" height = "270" align=center />
+
 #### size_238KB
 <img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/size_238KB.png" width = "270" height = "270" align=center />
 
