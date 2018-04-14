@@ -6,9 +6,19 @@
 
 <img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/img2.jpg" width = "300" height = "308" align=center />
 
+#### jni_278KB
+<img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/jni_278KB.png" width = "270" height = "270" align=center />
+#### quality_484KB
+<img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/quality_484KB.png" width = "270" height = "270" align=center />
+#### sample_199KB
+<img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/sample_199KB.png" width = "270" height = "270" align=center />
+#### size_238KB
+<img src="https://github.com/zengfw/EffectiveBitmap/blob/master/image/size_238KB.png" width = "270" height = "270" align=center />
+
 ## 使用方法
-将libs包中libeffective-bitmap.so、libjpegbither.so到项目中并加载即可。但是你必须使用类的限定名为“com.effective.bitmap.utils.EffectiveBitmapUtils”并添加：
+1.将libs包中libeffective-bitmap.so、libjpegbither.so到项目中并加载即可。但是你必须使用类的限定名为“com.effective.bitmap.utils.EffectiveBitmapUtils”并添加：
 ```
 public static native String compressBitmap(Bitmap bit, int w, int h, int quality, byte[] fileNameBytes,
                                                boolean optimize);
 ```
+2.download项目，构建修改自己想要的abi，以及使用类的限定名。
